@@ -1,10 +1,9 @@
-package com.equinoxlabs.demoassignmentapp
+package com.equinoxlabs.demoassignmentapp.Presentation.view.userList
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.widget.SearchView
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 
@@ -13,9 +12,7 @@ import com.ecourier.courier.data.datasource.exceptions.NetworkUnavailableExcepti
 import com.ecourier.courier.presentation.enums.Status
 import com.equinoxlabs.demoassignmentapp.Data.local.DataEntity
 import com.equinoxlabs.demoassignmentapp.Domain.entity.DataE
-import com.equinoxlabs.demoassignmentapp.Presentation.view.UserApplication
-import com.equinoxlabs.demoassignmentapp.Presentation.view.userList.DataListAdapter
-import com.equinoxlabs.demoassignmentapp.Presentation.view.userList.DataViewModel
+import com.equinoxlabs.demoassignmentapp.R
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlinx.android.synthetic.main.activity_list_of_employee.*
 import kotlinx.coroutines.async
@@ -69,14 +66,20 @@ class ListOfEmployee : AppCompatActivity(), SearchView.OnQueryTextListener {
                     Log.d("Error2",""+response.error)
                     if (response.error is NetworkUnavailableException){
 
-
-
-                        showData(keysList)
+                        showLocalData(keysList)
                     }
                 }
 
             }
         })
+    }
+
+    private fun showLocalData(keysList: ArrayList<DataE>) {
+        val linearLayoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        recycler_view.layoutManager = linearLayoutManager
+        mAdapter = DataListAdapter(this,keysList)
+        recycler_view.adapter = mAdapter
     }
 
     private fun showData(mLists: ArrayList<DataE>) {
