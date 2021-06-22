@@ -14,10 +14,10 @@ import com.equinoxlabs.demoassignmentapp.Domain.entity.DataE
 interface AppTextDao {
 
     @Query("SELECT * FROM DataTable")
-    fun getAllAppText(): LiveData<List<DataEntity>>
+    fun getAllData(): LiveData<List<DataEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertAllAppText(dataList: List<DataEntity?>)
+    fun insertAllData(dataList: List<DataEntity?>)
 
     @Query("DELETE FROM DataTable")
     fun deleteAllAppText()

@@ -3,16 +3,12 @@ package com.equinoxlabs.demoassignmentapp.Data.services
 import android.content.Context
 import android.net.ConnectivityManager
 import android.util.Log
-import com.ecourier.courier.data.datasource.exceptions.ExceptionFactory
 import com.ecourier.courier.data.datasource.exceptions.NetworkUnavailableException
 import com.equinoxlabs.demoassignmentapp.Data.Responses.DataResponse
 import com.go2future.tuvoclient.ErrorResponse
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import io.reactivex.Observable
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import retrofit2.Response
 
 class RestApiImpl constructor(
@@ -53,12 +49,6 @@ class RestApiImpl constructor(
                 Log.e("Error", "" + error)
                 val errorResponse: ErrorResponse? =
                     gson.fromJson(sessionEntity.errorBody()!!.charStream(), type)
-                emitter.onError(
-                    ExceptionFactory.create(
-                        sessionEntity.code(),
-                        errorResponse?.message
-                    )
-                )
             }
         }
 

@@ -56,8 +56,6 @@ fun createOkHttpClient(): OkHttpClient {
     httpClient.addInterceptor { chain ->
         val original = chain.request()
         val request = original.newBuilder()
-//                .header("Api-Version", "v1")
-            .header("Accept", "application/json")
             .build()
 
         chain.proceed(request)

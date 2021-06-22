@@ -11,8 +11,8 @@ interface UserRepository {
     fun getData(): Observable<DataResponseEntity>
 
     @WorkerThread
-    suspend fun insert(mLanguageList: List<DataEntity?>){
-        val languageDao = UserApplication.database?.getDataDao()
-        languageDao?.insertAllAppText(mLanguageList)
+    suspend fun insert(mdataList: List<DataEntity?>){
+        val dataDao = UserApplication.database?.getDataDao()
+        dataDao?.insertAllData(mdataList)
     }
 }

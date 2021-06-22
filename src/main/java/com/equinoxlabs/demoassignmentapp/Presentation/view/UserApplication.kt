@@ -33,9 +33,5 @@ class UserApplication : Application(){
                 )
             )
         }
-//        database = Room.databaseBuilder(applicationContext, LanguageRoomDB::class.java, "language")
-//            .fallbackToDestructiveMigration().build()
-//        getTokenForFirebase()
-
     }
 }

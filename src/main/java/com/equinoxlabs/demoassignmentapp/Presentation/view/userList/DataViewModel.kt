@@ -9,6 +9,7 @@ import com.equinoxlabs.demoassignmentapp.Data.local.DataEntity
 import com.equinoxlabs.demoassignmentapp.Domain.entity.DataE
 import com.equinoxlabs.demoassignmentapp.Domain.entity.DataResponseEntity
 import com.equinoxlabs.demoassignmentapp.Domain.interactor.DataUC
+import com.equinoxlabs.demoassignmentapp.Presentation.view.UserApplication
 import io.reactivex.observers.DisposableObserver
 import kotlinx.coroutines.launch
 
@@ -20,7 +21,7 @@ class DataViewModel(var mDataUC: DataUC) :ViewModel() {
     }
 
 //    fun getAppTextFromDb(): LiveData<List<DataE>> {
-//        return UserApplication.database!!.getDataDao().getAllAppText()
+//        return UserApplication.database!!.getDataDao().getAllData()
 //
 //    }
 suspend fun insert(mLanguageList:List<DataEntity?>) = viewModelScope.launch {
